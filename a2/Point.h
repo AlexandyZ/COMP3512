@@ -15,12 +15,15 @@ public:
   void setY(int y) noexcept { y_ = y; }
  
   void save(std::ostream& os = std::cout) const {
-    os << '(' << x_ << ',' << y_ << ')' << std::endl;
+    os << "(" << x_ << ", " << y_ << ")" << std::endl;
   }
 
   // called by operator+ (see below)
   Point& operator+=(const Point& rhs) {
     // provide implementation here
+    x_ += rhs.getX();
+    y_ += rhs.getY();
+    return *this;
   }
 
   friend Point operator*(int n, const Point& p);
@@ -41,6 +44,7 @@ operator+(const Point& lhs, const Point& rhs) {
 inline Point
 operator*(int n, const Point& p) {
   // provide implementation here
+  return Point(n * p.getX(), n * p.getY());
 }
 
 // should read back what's written by operator<< as well as by the save method
@@ -48,6 +52,16 @@ operator*(int n, const Point& p) {
 inline std::istream&
 operator>>(std::istream& is, Point& pt) {
   // provide implementation here
+  int x, y;
+  char c1, c2, c3;
+  is >> c1 >> x >> c2 >> y >> c3;
+  if(c1 == '(' && c2 == ',' && c3 == ')') {
+      pt.x_ = x;
+      pt.y_ = y;
+  }
+  else
+      is.setstate(std::ios_base::failbit);
+  return is;
 }
 
 inline std::ostream& 

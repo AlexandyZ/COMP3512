@@ -1,6 +1,10 @@
 #ifndef YREFLECTIONVISITOR_H
 #define YREFLECTIONVISITOR_H
 // headers, ...
+#include "ShapeVisitor.h"
+#include "Circle.h"
+#include "Triangle.h"
+#include "Rectangle.h"
 
 class  YReflectionVisitor: public ShapeVisitor {
 public:

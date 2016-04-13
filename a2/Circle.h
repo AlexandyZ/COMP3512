@@ -1,6 +1,9 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 // headers, ...
+#include <iostream>
+#include "Shape.h"
+#include "Point.h"
 
 class Circle: public Shape {
 public:

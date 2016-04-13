@@ -1,9 +1,9 @@
 #ifndef SHAPEVISITOR_H
 #define SHAPEVISITOR_H
 // headers, ...
-#include "Circle.h"
-#include "Rectangle.h"
-#include "Triangle.h"
+class Circle;
+class Triangle;
+class Rectangle;
 
 class ShapeVisitor {
 public:

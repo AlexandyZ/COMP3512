@@ -1,0 +1,30 @@
+#!/bin/bash
+
+runtest() {
+  ((tests++))
+  bash -c "$1 > $2.my 2> /dev/null"
+  cmp $2 $2.my > /dev/null
+  if [ $? -eq 0 ]; then
+    printf "passed: "
+  else
+    printf "FAILED: "
+  fi
+
+  printf "%s\n" "$1 > $2.my 2> /dev/null"
+}
+
+echo "Delete data & output files from previous tests?"
+echo "Press ctl-c to abort, any other key to delete the files & run tests"
+read x
+rm -f data data1 *.my
+
+echo
+echo "Test for handing invalid commands (no output)"
+runtest "./a2 data < in1" out1
+echo "Simple test to create a data file"
+runtest "./a2 data1 < in2" out2
+echo "Test on loading data from file created from previous test"
+runtest "./a2 data1 < in3" out3
+echo "Testing transformations"
+cp data2 data2.my
+runtest "./a2 data2.my < in4" out4

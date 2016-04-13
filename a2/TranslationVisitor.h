@@ -1,6 +1,10 @@
 #ifndef TRANSLATIONVISITOR_H
 #define TRANSLATIONVISITOR_H
 // headers, ...
+#include "ShapeVisitor.h"
+#include "Circle.h"
+#include "Triangle.h"
+#include "Rectangle.h"
 
 class TranslationVisitor: public ShapeVisitor {
 public:

@@ -1,8 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 // headers, ...
-#include "ShapeVisitor.h"
 #include <iostream>
+#include "ShapeVisitor.h"
 
 class Shape {  // ABC
 public:

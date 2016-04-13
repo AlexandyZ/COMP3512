@@ -1,6 +1,9 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 // headers, ... 
+#include <iostream>
+#include "Shape.h"
+#include "Point.h"
 
 class Triangle: public Shape {
 public:
@@ -31,8 +34,37 @@ public:
 
 private:
   // provide suitable data structure
+  Point vertex0_;
+  Point vertex1_;
+  Point vertex2_;
 };
 
 // provide inline implementation of getVertex & setVertex here
+inline
+Point Triangle::getVertex(int i) const {
+    Point p;
+    if(i == 0)
+        p = vertex0_;
+    else if(i == 1)
+        p = vertex1_;
+    else if(i == 2)
+        p = vertex2_;
+    else
+        throw "Point Triangle::getVertex(int i): invalid vertices";
+    return p;
+}
+
+inline
+void Triangle::setVertex(int i, const Point& p) {
+    if(i == 0)
+        vertex0_ = p;
+    else if(i == 1)
+        vertex1_ = p;
+    else if(i == 2)
+        vertex2_ = p;
+    else
+        throw "void Triangle::setVertex(int i, const Point& p): "
+              "invalid vertices";
+}
 // implement the other functions in the CPP file
 #endif
