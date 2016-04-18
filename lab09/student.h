@@ -3,23 +3,23 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include "Name.h"
 
 class Student{
 public:
     explicit Student(const std::string& id = "a12345678",
-                    const std::string& first = "homer",
-                    const std::string& last = "simpson")
-    : id_(id), first_(first), last_(last){
+                    const Name& name = Name())
+    : id_(id), name_(name){
         if(!isValidId(id_))
             throw "Invalid Id";
     }
     
     virtual void print(std::ostream& os) const{
-        os << id_ << ' ' << first_ << ' ' << last_;
+        os << id_ << ' ' << name_;
     }
     
     virtual void display(std::ostream& os) const{
-        os << "ID: " << id_ << "\nName: " << first_ << ' ' << last_ << std::endl;
+        os << "ID: " << id_ << "\nName: " << name_ << std::endl;
     }
     
     friend std::ostream& operator << (std::ostream& os, const Student& s);
@@ -28,8 +28,7 @@ public:
     virtual ~Student() {}
 private:
     std::string id_;
-    std::string first_;
-    std::string last_;
+    Name        name_;
     
     static bool isValidId(const std::string& id){
         if(id.length() != 9)
@@ -53,13 +52,11 @@ operator << (std::ostream& os, const Student& s){
 inline std::istream&
 operator >> (std::istream& is, Student& s){
     std::string id;
-    std::string first;
-    std::string last;
+    Name        name;
         
-    if(is >> id >> first >> last){
+    if(is >> id >> name){
         s.id_ = id;
-        s.first_ = first;
-        s.last_ = last;
+        s.name_ = name;
     } else {
         is.setstate(std::ios_base::failbit);
     }        

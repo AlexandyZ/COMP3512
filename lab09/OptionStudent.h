@@ -7,8 +7,7 @@
 class OptionStudent: public Student{
 public:
     explicit OptionStudent(const std::string& id = "a12345678",
-                           const std::string& first = "homer",
-                           const std::string& last = "simpson",
+                           const Name& name = Name(),
                            const int term = 3,
                            const std::string& option = "IS");
     OptionStudent(const OptionStudent& ops);
