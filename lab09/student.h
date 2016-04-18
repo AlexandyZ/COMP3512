@@ -15,11 +15,11 @@ public:
     }
     
     virtual void print(std::ostream& os) const{
-    os << id_ << ' ' << first_ << ' ' << last_;
+        os << id_ << ' ' << first_ << ' ' << last_;
     }
     
     virtual void display(std::ostream& os) const{
-    os << "ID: " << id_ << "\nName: " << first_ << ' ' << last_ << std::endl;
+        os << "ID: " << id_ << "\nName: " << first_ << ' ' << last_ << std::endl;
     }
     
     friend std::ostream& operator << (std::ostream& os, const Student& s);
@@ -45,7 +45,9 @@ private:
 
 inline std::ostream&
 operator << (std::ostream& os, const Student& s){
-    return os << s.id_ << " " << s.first_ << ' ' << s.last_ << std::endl; 
+    s.print(os);
+    return os;
+    //return os << s.id_ << " " << s.first_ << ' ' << s.last_ << std::endl; 
 }
     
 inline std::istream&

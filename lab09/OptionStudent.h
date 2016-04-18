@@ -11,7 +11,7 @@ public:
                            const std::string& last = "simpson",
                            const int term = 3,
                            const std::string& option = "IS");
-
+    OptionStudent(const OptionStudent& ops);
     static size_t getCount() { return count_; }
     virtual void print(std::ostream& os) const override;
     virtual void display(std::ostream& os) const override;
