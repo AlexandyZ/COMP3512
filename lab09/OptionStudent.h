@@ -6,8 +6,7 @@
 
 class OptionStudent: public Student{
 public:
-    explicit OptionStudent(const std::string& id = "a12345678",
-                           const Name& name = Name(),
+    explicit OptionStudent(const Student& student = Student(),
                            const int term = 3,
                            const std::string& option = "IS");
     OptionStudent(const OptionStudent& ops);
@@ -18,8 +17,9 @@ public:
     
     friend std::istream& operator>>(std::istream& is, OptionStudent& s);
 private:
+    Student       student_;
     int           term_;
-    std::string    option_;
+    std::string   option_;
     static size_t count_;
 };
 

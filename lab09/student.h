@@ -8,7 +8,7 @@
 class Student{
 public:
     explicit Student(const std::string& id = "a12345678",
-                    const Name& name = Name())
+                     const Name& name = Name())
     : id_(id), name_(name){
         if(!isValidId(id_))
             throw "Invalid Id";

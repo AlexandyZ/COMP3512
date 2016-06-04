@@ -4,11 +4,10 @@ using namespace std;
 
 size_t OptionStudent::count_ = 0;
 
-OptionStudent::OptionStudent(const std::string& id,
-                             const Name& name,
+OptionStudent::OptionStudent(const Student& student,
                              const int term,
                              const std::string& option)
-: Student(id, name), term_(term), option_(option){
+: Student(student), term_(term), option_(option){
     count_++;
 }
 OptionStudent::OptionStudent(const OptionStudent& ops)
